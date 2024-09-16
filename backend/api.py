@@ -16,7 +16,7 @@ def get_db_connection():
 @app.route('/data', methods=['POST'])
 def add_data():
     data = request.json
-    request_datetime = datetime.strptime(data['current_datetime'], '%Y-%m-%d %H:%M:%S')
+    request_datetime = datetime.strptime(data['datetime'], '%Y-%m-%d %H:%M:%S')
     latitude = data['latitude']
     longitude = data['longitude']
     
@@ -29,12 +29,20 @@ def add_data():
     cursor = conn.cursor()
     
     # Retrieve the row with the clostest datetime and closest latitude and longitude
-    cursor.execute("SELECT * FROM energy_data WHERE ABS(latitude - %s) < 0.01 AND ABS(longitude - %s) < 0.01 ORDER BY ABS(current_datetime - %s) LIMIT 1", (latitude, longitude, request_datetime))
-    fetched_data = cursor.fetchone()
-    
+    cursor.execute("""
+        SELECT * FROM energy_data 
+        WHERE ABS(latitude - ?) < 0.01 
+        AND ABS(longitude - ?) < 0.01 
+        ORDER BY ABS(strftime('%s', time) - strftime('%s', ?)) 
+        LIMIT 1
+    """, (latitude, longitude, request_datetime.strftime('%Y-%m-%d %H:%M:%S')))
+    if cursor.fetchone() is None:
+        return jsonify({'error': 'No data found for the given parameters'}), 404
+    else:
+        fetched_data = cursor.fetchone()
     cursor.close()
-    conn.close()
-    
+    conn.close()   
+     
     # Prepare response
     response = {
         'Date': fetched_data[1],
@@ -48,8 +56,7 @@ def add_data():
         'Latitude': fetched_data[9],
         'Longitude': fetched_data[10],
     }
-    
     return jsonify(response)
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run()
