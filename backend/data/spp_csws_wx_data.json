@@ -1,0 +1,503 @@
+{
+  "AllItems": [
+    {
+      "StationNum": 1,
+      "coordinatesValue": {
+        "Latitude": 33.45,
+        "Longitude": -94,
+        "TimeZone": -6,
+        "Modified": false,
+        "New": false,
+        "Removed": false,
+        "LineNumber": 7,
+        "EndLineNumber": -1,
+        "FileName": "\\\\usfilesvr\\zdrive\\tesla\\spp_csws\\autocal\\weather.in"
+      },
+      "StationName": "TXK",
+      "FeedbackFolder": "mda",
+      "ReadWeather": {
+        "AllItems": [
+          {
+            "SalFileDirectory": "z:\\feedback_full\\mda\\TXK_act.sal",
+            "StartDateTime": null,
+            "EndDateTime": null,
+            "Data": null,
+            "Modified": false,
+            "New": false,
+            "Removed": false,
+            "LineNumber": 10,
+            "EndLineNumber": -1,
+            "FileName": "\\\\usfilesvr\\zdrive\\tesla\\spp_csws\\autocal\\weather.in"
+          },
+          {
+            "SalFileDirectory": "z:\\feedback\\mda\\TXK_act.sal",
+            "StartDateTime": null,
+            "EndDateTime": null,
+            "Data": null,
+            "Modified": false,
+            "New": false,
+            "Removed": false,
+            "LineNumber": 11,
+            "EndLineNumber": -1,
+            "FileName": "\\\\usfilesvr\\zdrive\\tesla\\spp_csws\\autocal\\weather.in"
+          },
+          {
+            "SalFileDirectory": "z:z:\\tesla\\wx\\TXK\\TXK_history.sal",
+            "StartDateTime": null,
+            "EndDateTime": null,
+            "Data": null,
+            "Modified": false,
+            "New": false,
+            "Removed": false,
+            "LineNumber": 15,
+            "EndLineNumber": -1,
+            "FileName": "\\\\usfilesvr\\zdrive\\tesla\\wx\\TXK\\weather.in"
+          },
+          {
+            "SalFileDirectory": "z:z:\\tesla\\wx\\TXK\\TXK_current.sal",
+            "StartDateTime": null,
+            "EndDateTime": null,
+            "Data": null,
+            "Modified": false,
+            "New": false,
+            "Removed": false,
+            "LineNumber": 16,
+            "EndLineNumber": -1,
+            "FileName": "\\\\usfilesvr\\zdrive\\tesla\\wx\\TXK\\weather.in"
+          },
+          {
+            "SalFileDirectory": "z:\\tesla\\isd\\KTXK\\txk_patch.sal",
+            "StartDateTime": null,
+            "EndDateTime": null,
+            "Data": null,
+            "Modified": false,
+            "New": false,
+            "Removed": false,
+            "LineNumber": 13,
+            "EndLineNumber": -1,
+            "FileName": "\\\\usfilesvr\\zdrive\\tesla\\spp_csws\\autocal\\weather.in"
+          }
+        ],
+        "Count": 5
+      },
+      "Normal": {
+        "NormalFileDirectory": "\\\\usfilesvr\\zdrive\\tesla\\wx\\TXK\\TXK.nrm",
+        "Data": null,
+        "Modified": false,
+        "New": false,
+        "Removed": false,
+        "LineNumber": 17,
+        "EndLineNumber": -1,
+        "FileName": "\\\\usfilesvr\\zdrive\\tesla\\wx\\TXK\\weather.in"
+      },
+      "ActWxSource": {
+        "WxActDbServer": "usstagsql",
+        "WxActDbBase": "mda",
+        "WxActDbTable": "TXK_act",
+        "WxActLagInMinutes": 1440,
+        "WxActLastDateTime": "0001-01-01T00:00:00"
+      },
+      "FcstWxSource": {
+        "AllItems": [],
+        "Count": 0
+      },
+      "WxAuxTable": {
+        "AllItems": [],
+        "Count": 0
+      },
+      "TimeZone": -600,
+      "TotalTable": null
+    },
+    {
+      "StationNum": 2,
+      "coordinatesValue": null,
+      "StationName": "TUL",
+      "FeedbackFolder": "mda",
+      "ReadWeather": {
+        "AllItems": [
+          {
+            "SalFileDirectory": "z:\\feedback_full\\mda\\TUL_act.sal",
+            "StartDateTime": null,
+            "EndDateTime": null,
+            "Data": null,
+            "Modified": false,
+            "New": false,
+            "Removed": false,
+            "LineNumber": 17,
+            "EndLineNumber": -1,
+            "FileName": "\\\\usfilesvr\\zdrive\\tesla\\spp_csws\\autocal\\weather.in"
+          },
+          {
+            "SalFileDirectory": "z:\\feedback\\mda\\TUL_act.sal",
+            "StartDateTime": null,
+            "EndDateTime": null,
+            "Data": null,
+            "Modified": false,
+            "New": false,
+            "Removed": false,
+            "LineNumber": 18,
+            "EndLineNumber": -1,
+            "FileName": "\\\\usfilesvr\\zdrive\\tesla\\spp_csws\\autocal\\weather.in"
+          },
+          {
+            "SalFileDirectory": "z:z:\\tesla\\wx\\TUL\\TUL_history.sal",
+            "StartDateTime": null,
+            "EndDateTime": null,
+            "Data": null,
+            "Modified": false,
+            "New": false,
+            "Removed": false,
+            "LineNumber": 15,
+            "EndLineNumber": -1,
+            "FileName": "\\\\usfilesvr\\zdrive\\tesla\\wx\\TUL\\weather.in"
+          },
+          {
+            "SalFileDirectory": "z:z:\\tesla\\wx\\TUL\\TUL_current.sal",
+            "StartDateTime": null,
+            "EndDateTime": null,
+            "Data": null,
+            "Modified": false,
+            "New": false,
+            "Removed": false,
+            "LineNumber": 16,
+            "EndLineNumber": -1,
+            "FileName": "\\\\usfilesvr\\zdrive\\tesla\\wx\\TUL\\weather.in"
+          },
+          {
+            "SalFileDirectory": "z:\\tesla\\isd\\KTUL\\tul_patch.sal",
+            "StartDateTime": null,
+            "EndDateTime": null,
+            "Data": null,
+            "Modified": false,
+            "New": false,
+            "Removed": false,
+            "LineNumber": 20,
+            "EndLineNumber": -1,
+            "FileName": "\\\\usfilesvr\\zdrive\\tesla\\spp_csws\\autocal\\weather.in"
+          }
+        ],
+        "Count": 5
+      },
+      "Normal": {
+        "NormalFileDirectory": "\\\\usfilesvr\\zdrive\\tesla\\wx\\TUL\\TUL.nrm",
+        "Data": null,
+        "Modified": false,
+        "New": false,
+        "Removed": false,
+        "LineNumber": 17,
+        "EndLineNumber": -1,
+        "FileName": "\\\\usfilesvr\\zdrive\\tesla\\wx\\TUL\\weather.in"
+      },
+      "ActWxSource": {
+        "WxActDbServer": "usstagsql",
+        "WxActDbBase": "mda",
+        "WxActDbTable": "TUL_act",
+        "WxActLagInMinutes": 1440,
+        "WxActLastDateTime": "0001-01-01T00:00:00"
+      },
+      "FcstWxSource": {
+        "AllItems": [],
+        "Count": 0
+      },
+      "WxAuxTable": {
+        "AllItems": [],
+        "Count": 0
+      },
+      "TimeZone": -600,
+      "TotalTable": null
+    },
+    {
+      "StationNum": 3,
+      "coordinatesValue": null,
+      "StationName": "LAW",
+      "FeedbackFolder": "mda",
+      "ReadWeather": {
+        "AllItems": [
+          {
+            "SalFileDirectory": "z:\\feedback_full\\mda\\LAW_act.sal",
+            "StartDateTime": null,
+            "EndDateTime": null,
+            "Data": null,
+            "Modified": false,
+            "New": false,
+            "Removed": false,
+            "LineNumber": 24,
+            "EndLineNumber": -1,
+            "FileName": "\\\\usfilesvr\\zdrive\\tesla\\spp_csws\\autocal\\weather.in"
+          },
+          {
+            "SalFileDirectory": "z:\\feedback\\mda\\LAW_act.sal",
+            "StartDateTime": null,
+            "EndDateTime": null,
+            "Data": null,
+            "Modified": false,
+            "New": false,
+            "Removed": false,
+            "LineNumber": 25,
+            "EndLineNumber": -1,
+            "FileName": "\\\\usfilesvr\\zdrive\\tesla\\spp_csws\\autocal\\weather.in"
+          },
+          {
+            "SalFileDirectory": "z:z:\\tesla\\wx\\LAW\\LAW_history.sal",
+            "StartDateTime": null,
+            "EndDateTime": null,
+            "Data": null,
+            "Modified": false,
+            "New": false,
+            "Removed": false,
+            "LineNumber": 15,
+            "EndLineNumber": -1,
+            "FileName": "\\\\usfilesvr\\zdrive\\tesla\\wx\\LAW\\weather.in"
+          },
+          {
+            "SalFileDirectory": "z:z:\\tesla\\wx\\LAW\\LAW_current.sal",
+            "StartDateTime": null,
+            "EndDateTime": null,
+            "Data": null,
+            "Modified": false,
+            "New": false,
+            "Removed": false,
+            "LineNumber": 16,
+            "EndLineNumber": -1,
+            "FileName": "\\\\usfilesvr\\zdrive\\tesla\\wx\\LAW\\weather.in"
+          },
+          {
+            "SalFileDirectory": "z:\\tesla\\isd\\KLAW\\law_patch.sal",
+            "StartDateTime": null,
+            "EndDateTime": null,
+            "Data": null,
+            "Modified": false,
+            "New": false,
+            "Removed": false,
+            "LineNumber": 27,
+            "EndLineNumber": -1,
+            "FileName": "\\\\usfilesvr\\zdrive\\tesla\\spp_csws\\autocal\\weather.in"
+          }
+        ],
+        "Count": 5
+      },
+      "Normal": {
+        "NormalFileDirectory": "\\\\usfilesvr\\zdrive\\tesla\\wx\\LAW\\LAW.nrm",
+        "Data": null,
+        "Modified": false,
+        "New": false,
+        "Removed": false,
+        "LineNumber": 17,
+        "EndLineNumber": -1,
+        "FileName": "\\\\usfilesvr\\zdrive\\tesla\\wx\\LAW\\weather.in"
+      },
+      "ActWxSource": {
+        "WxActDbServer": "usstagsql",
+        "WxActDbBase": "mda",
+        "WxActDbTable": "LAW_act",
+        "WxActLagInMinutes": 1440,
+        "WxActLastDateTime": "0001-01-01T00:00:00"
+      },
+      "FcstWxSource": {
+        "AllItems": [],
+        "Count": 0
+      },
+      "WxAuxTable": {
+        "AllItems": [],
+        "Count": 0
+      },
+      "TimeZone": -600,
+      "TotalTable": null
+    },
+    {
+      "StationNum": 4,
+      "coordinatesValue": null,
+      "StationName": "SHV",
+      "FeedbackFolder": "mda",
+      "ReadWeather": {
+        "AllItems": [
+          {
+            "SalFileDirectory": "z:\\feedback_full\\mda\\SHV_act.sal",
+            "StartDateTime": null,
+            "EndDateTime": null,
+            "Data": null,
+            "Modified": false,
+            "New": false,
+            "Removed": false,
+            "LineNumber": 31,
+            "EndLineNumber": -1,
+            "FileName": "\\\\usfilesvr\\zdrive\\tesla\\spp_csws\\autocal\\weather.in"
+          },
+          {
+            "SalFileDirectory": "z:\\feedback\\mda\\SHV_act.sal",
+            "StartDateTime": null,
+            "EndDateTime": null,
+            "Data": null,
+            "Modified": false,
+            "New": false,
+            "Removed": false,
+            "LineNumber": 32,
+            "EndLineNumber": -1,
+            "FileName": "\\\\usfilesvr\\zdrive\\tesla\\spp_csws\\autocal\\weather.in"
+          },
+          {
+            "SalFileDirectory": "z:z:\\tesla\\wx\\SHV\\SHV_history.sal",
+            "StartDateTime": null,
+            "EndDateTime": null,
+            "Data": null,
+            "Modified": false,
+            "New": false,
+            "Removed": false,
+            "LineNumber": 15,
+            "EndLineNumber": -1,
+            "FileName": "\\\\usfilesvr\\zdrive\\tesla\\wx\\SHV\\weather.in"
+          },
+          {
+            "SalFileDirectory": "z:z:\\tesla\\wx\\SHV\\SHV_current.sal",
+            "StartDateTime": null,
+            "EndDateTime": null,
+            "Data": null,
+            "Modified": false,
+            "New": false,
+            "Removed": false,
+            "LineNumber": 16,
+            "EndLineNumber": -1,
+            "FileName": "\\\\usfilesvr\\zdrive\\tesla\\wx\\SHV\\weather.in"
+          }
+        ],
+        "Count": 4
+      },
+      "Normal": {
+        "NormalFileDirectory": "\\\\usfilesvr\\zdrive\\tesla\\wx\\SHV\\SHV.nrm",
+        "Data": null,
+        "Modified": false,
+        "New": false,
+        "Removed": false,
+        "LineNumber": 17,
+        "EndLineNumber": -1,
+        "FileName": "\\\\usfilesvr\\zdrive\\tesla\\wx\\SHV\\weather.in"
+      },
+      "ActWxSource": {
+        "WxActDbServer": "usstagsql",
+        "WxActDbBase": "mda",
+        "WxActDbTable": "SHV_act",
+        "WxActLagInMinutes": 1440,
+        "WxActLastDateTime": "0001-01-01T00:00:00"
+      },
+      "FcstWxSource": {
+        "AllItems": [],
+        "Count": 0
+      },
+      "WxAuxTable": {
+        "AllItems": [],
+        "Count": 0
+      },
+      "TimeZone": -600,
+      "TotalTable": null
+    },
+    {
+      "StationNum": 5,
+      "coordinatesValue": {
+        "Latitude": 33.45,
+        "Longitude": -94,
+        "TimeZone": -6,
+        "Modified": false,
+        "New": false,
+        "Removed": false,
+        "LineNumber": 42,
+        "EndLineNumber": -1,
+        "FileName": "\\\\usfilesvr\\zdrive\\tesla\\spp_csws\\autocal\\weather.in"
+      },
+      "StationName": "XNA",
+      "FeedbackFolder": "mda",
+      "ReadWeather": {
+        "AllItems": [
+          {
+            "SalFileDirectory": "z:\\feedback_full\\mda\\XNA_act.sal",
+            "StartDateTime": null,
+            "EndDateTime": null,
+            "Data": null,
+            "Modified": false,
+            "New": false,
+            "Removed": false,
+            "LineNumber": 37,
+            "EndLineNumber": -1,
+            "FileName": "\\\\usfilesvr\\zdrive\\tesla\\spp_csws\\autocal\\weather.in"
+          },
+          {
+            "SalFileDirectory": "z:\\feedback\\mda\\XNA_act.sal",
+            "StartDateTime": null,
+            "EndDateTime": null,
+            "Data": null,
+            "Modified": false,
+            "New": false,
+            "Removed": false,
+            "LineNumber": 38,
+            "EndLineNumber": -1,
+            "FileName": "\\\\usfilesvr\\zdrive\\tesla\\spp_csws\\autocal\\weather.in"
+          },
+          {
+            "SalFileDirectory": "z:z:\\tesla\\wx\\XNA\\XNA_history.sal",
+            "StartDateTime": null,
+            "EndDateTime": null,
+            "Data": null,
+            "Modified": false,
+            "New": false,
+            "Removed": false,
+            "LineNumber": 15,
+            "EndLineNumber": -1,
+            "FileName": "\\\\usfilesvr\\zdrive\\tesla\\wx\\XNA\\weather.in"
+          },
+          {
+            "SalFileDirectory": "z:z:\\tesla\\wx\\XNA\\XNA_current.sal",
+            "StartDateTime": null,
+            "EndDateTime": null,
+            "Data": null,
+            "Modified": false,
+            "New": false,
+            "Removed": false,
+            "LineNumber": 16,
+            "EndLineNumber": -1,
+            "FileName": "\\\\usfilesvr\\zdrive\\tesla\\wx\\XNA\\weather.in"
+          },
+          {
+            "SalFileDirectory": "z:\\tesla\\isd\\KXNA\\xna_patch.sal",
+            "StartDateTime": null,
+            "EndDateTime": null,
+            "Data": null,
+            "Modified": false,
+            "New": false,
+            "Removed": false,
+            "LineNumber": 40,
+            "EndLineNumber": -1,
+            "FileName": "\\\\usfilesvr\\zdrive\\tesla\\spp_csws\\autocal\\weather.in"
+          }
+        ],
+        "Count": 5
+      },
+      "Normal": {
+        "NormalFileDirectory": "\\\\usfilesvr\\zdrive\\tesla\\wx\\XNA\\XNA.nrm",
+        "Data": null,
+        "Modified": false,
+        "New": false,
+        "Removed": false,
+        "LineNumber": 17,
+        "EndLineNumber": -1,
+        "FileName": "\\\\usfilesvr\\zdrive\\tesla\\wx\\XNA\\weather.in"
+      },
+      "ActWxSource": {
+        "WxActDbServer": "usstagsql",
+        "WxActDbBase": "mda",
+        "WxActDbTable": "XNA_act",
+        "WxActLagInMinutes": 1440,
+        "WxActLastDateTime": "0001-01-01T00:00:00"
+      },
+      "FcstWxSource": {
+        "AllItems": [],
+        "Count": 0
+      },
+      "WxAuxTable": {
+        "AllItems": [],
+        "Count": 0
+      },
+      "TimeZone": -600,
+      "TotalTable": null
+    }
+  ],
+  "Count": 5
+}
