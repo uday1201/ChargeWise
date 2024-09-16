@@ -1,20 +1,17 @@
 from flask import Flask, request, jsonify
-import mysql.connector
+import sqlite3
 from datetime import datetime
 
 app = Flask(__name__)
 
-# MySQL configuration
-db_config = {
-    'user': 'your_username',
-    'password': 'your_password',
-    'host': 'your_host',
-    'database': 'your_database'
-}
+# SQLite configuration
+DATABASE = 'energy_data.db'
 
-# Connect to MySQL
+# Connect to SQLite
 def get_db_connection():
-    return mysql.connector.connect(**db_config)
+    conn = sqlite3.connect(DATABASE)
+    conn.row_factory = sqlite3.Row
+    return conn
 
 @app.route('/data', methods=['POST'])
 def add_data():
