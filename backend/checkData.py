@@ -21,6 +21,7 @@ rows = cursor.fetchall()
 for row in rows:
     print(row)
 
+
 check_data(cursor, 'energy_data')
 check_data(cursor, 'load_forecast')
 check_data(cursor, 'wx_forecast')
