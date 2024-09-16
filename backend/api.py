@@ -16,46 +16,47 @@ def get_db_connection():
 @app.route('/data', methods=['POST'])
 def add_data():
     data = request.json
-    request_datetime = datetime.strptime(data['datetime'], '%Y-%m-%d %H:%M:%S')
+    request_date = data['datetime']
     latitude = data['latitude']
     longitude = data['longitude']
-    
-    # Extract fields from datetime object
-    date = request_datetime.date()
-    time = request_datetime.time()
     
     # Insert data into MySQL
     conn = get_db_connection()
     cursor = conn.cursor()
     
+    print(request_date)
     # Retrieve the row with the clostest datetime and closest latitude and longitude
     cursor.execute("""
         SELECT * FROM energy_data 
-        WHERE ABS(latitude - ?) < 0.01 
+        WHERE date = ?
+        AND ABS(latitude - ?) < 0.01 
         AND ABS(longitude - ?) < 0.01 
-        ORDER BY ABS(strftime('%s', time) - strftime('%s', ?)) 
-        LIMIT 1
-    """, (latitude, longitude, request_datetime.strftime('%Y-%m-%d %H:%M:%S')))
-    if cursor.fetchone() is None:
-        return jsonify({'error': 'No data found for the given parameters'}), 404
-    else:
-        fetched_data = cursor.fetchone()
+        ORDER BY time ASC
+    """, (request_date,latitude, longitude))
+    fetched_data = cursor.fetchall()
     cursor.close()
     conn.close()   
      
     # Prepare response
+    if not fetched_data:
+        return jsonify({'error': 'No data found for the given parameters'}), 404
     response = {
-        'Date': fetched_data[1],
-        'Day of Week': fetched_data[2],
-        'Time': fetched_data[3],
-        'Timezone': fetched_data[4],
-        'Price (per kWh)': fetched_data[5],
-        'Source (Primary)': fetched_data[6],
-        '% Clean Energy': fetched_data[7],
-        'Load (0-100%)': fetched_data[8],
-        'Latitude': fetched_data[9],
-        'Longitude': fetched_data[10],
+        'Date': fetched_data[0]['date'],
+        'Day of Week': fetched_data[0]['day_of_week'],
+        'Timezone': fetched_data[0]['timezone'],
+        'Latitude': fetched_data[0]['latitude'],
+        'Longitude': fetched_data[0]['longitude'],
+        'Data Series': []
     }
+    for row in fetched_data:
+        print(row)
+        response['Data Series'].append({
+            'Time': row[3],
+            'Price (per kWh)': row[5],
+            'Source (Primary)': row[6],
+            '% Clean Energy': row[7],
+            'Load (0-100%)': row[8]
+        })
     return jsonify(response)
 
 if __name__ == '__main__':
