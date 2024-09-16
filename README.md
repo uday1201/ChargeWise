@@ -10,3 +10,6 @@ Project for tha Edison Event 2024
 - Source (Primary)
 - % Clean Energy
 - Load (0-100%) 
+- Latatitude
+- Longitude
+
