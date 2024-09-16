@@ -5,7 +5,7 @@ conn = sqlite3.connect('energy_data.db')
 cursor = conn.cursor()
 
 # Query the energy_data table
-cursor.execute("SELECT * FROM energy_data")
+cursor.execute("SELECT * FROM PriceData limit 10")
 rows = cursor.fetchall()
 
 # Print the retrieved data

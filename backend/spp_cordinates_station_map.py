@@ -8,16 +8,17 @@ with open('spp_csws_wx_data.json', 'r') as file:
 # Parse JSON data
 data = json.loads(json_data)
 
+stations = []
 # Extract relevant fields
-stations = [
-    (
-        item["StationNum"],
-        item["coordinatesValue"]["Latitude"],
-        item["coordinatesValue"]["Longitude"],
-        item["StationName"]
-    )
-    for item in data["AllItems"]
-]
+for item in data["AllItems"]:
+    print("StationNum: ", item["StationName"])
+    station_num = item["StationNum"]
+    latitude = item["coordinatesValue"]["Latitude"]
+    longitude = item["coordinatesValue"]["Longitude"]
+    station_name = item["StationName"]
+
+    # Prepare data for insertion
+    stations.append((station_num, latitude, longitude, station_name))
 
 # Connect to SQLite database (or create it)
 conn = sqlite3.connect('energy_data.db')
