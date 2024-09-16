@@ -13,6 +13,14 @@ def check_data(cursor, table):
 conn = sqlite3.connect('backend/energy_data.db')
 cursor = conn.cursor()
 
+# Query the energy_data table
+cursor.execute("SELECT * FROM PriceData limit 10")
+rows = cursor.fetchall()
+
+# Print the retrieved data
+for row in rows:
+    print(row)
+
 check_data(cursor, 'energy_data')
 check_data(cursor, 'load_forecast')
 check_data(cursor, 'wx_forecast')
