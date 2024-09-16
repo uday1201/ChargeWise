@@ -49,7 +49,6 @@ def add_data():
         'Data Series': []
     }
     for row in fetched_data:
-        print(row)
         response['Data Series'].append({
             'Time': row[3],
             'Price (per kWh)': row[5],

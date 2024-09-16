@@ -1,6 +1,10 @@
 import sqlite3
 from datetime import datetime
 
+# Connect to SQLite database
+conn = sqlite3.connect('energy_data.db')
+cursor = conn.cursor()
+
 # Dummy data
 dummy_data = [
     {

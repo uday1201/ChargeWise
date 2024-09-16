@@ -75,14 +75,14 @@ def insert_data_to_table(load_fcst_data, table, cursor, conn):
 
 #get tw3 forecast data
 model_name = 'TESLA: SPP-CSWS'
-start_date = '2024-09-16'
-end_date = '2024-09-23'
+start_date = '2024-09-14'
+end_date = '2024-09-20'
 load_fcst_data = get_tw3_fcst('Standard', model_name, start_date, end_date)
 wx_data = get_tw3_fcst('Wx', 'TESLA: SPP-CSWS', start_date, end_date)
 
 
 # Connect to SQLite database
-conn = sqlite3.connect('backend/energy_data.db')
+conn = sqlite3.connect('energy_data.db')
 cursor = conn.cursor()
 insert_data_to_table(load_fcst_data, 'load_forecast', cursor, conn)
 insert_data_to_table(wx_data, 'wx_forecast', cursor, conn)

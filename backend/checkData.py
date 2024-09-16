@@ -10,7 +10,7 @@ def check_data(cursor, table):
         print(row)
 
 # Connect to SQLite database
-conn = sqlite3.connect('backend/energy_data.db')
+conn = sqlite3.connect('energy_data.db')
 cursor = conn.cursor()
 
 # Query the energy_data table
