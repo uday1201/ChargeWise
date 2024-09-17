@@ -17,25 +17,56 @@ def get_db_connection():
 def add_data():
     data = request.json
     request_date = data['datetime']
-    latitude = data['latitude']
-    longitude = data['longitude']
     
     # Insert data into MySQL
     conn = get_db_connection()
     cursor = conn.cursor()
     
     print(request_date)
-    # Retrieve the row with the clostest datetime and closest latitude and longitude
+    # Retrieve the row with the clostest datetime
     cursor.execute("""
-        SELECT * FROM energy_data 
-        WHERE date = ?
-        AND ABS(latitude - ?) < 0.01 
-        AND ABS(longitude - ?) < 0.01 
-        ORDER BY time ASC
-    """, (request_date,latitude, longitude))
+        WITH aggregated_data AS (
+            SELECT
+                date,
+                day_of_week,
+                time,
+                timezone,
+                price_per_kwh,
+                source_primary,
+                percent_clean_energy,
+                latitude,
+                longitude,
+                -- Aggregate the load
+                AVG(load) AS average_load
+            FROM energy_data
+            WHERE date = ?
+            GROUP BY
+                date,
+                day_of_week,
+                time,
+                timezone,
+                price_per_kwh,
+                source_primary,
+                percent_clean_energy,
+                latitude,
+                longitude
+        )
+        SELECT
+            date,
+            day_of_week,
+            time,
+            timezone,
+            price_per_kwh,
+            source_primary,
+            percent_clean_energy,
+            average_load AS load,
+            latitude,
+            longitude
+        FROM aggregated_data;
+    """, (request_date,))
     fetched_data = cursor.fetchall()
     cursor.close()
-    conn.close()   
+    conn.close() 
      
     # Prepare response
     if not fetched_data:
@@ -49,12 +80,13 @@ def add_data():
         'Data Series': []
     }
     for row in fetched_data:
+        print(row)
         response['Data Series'].append({
-            'Time': row[3],
-            'Price (per kWh)': row[5],
-            'Source (Primary)': row[6],
-            '% Clean Energy': row[7],
-            'Load (0-100%)': row[8]
+            'Time': row[2],
+            'Price (per kWh)': row[4],
+            'Source (Primary)': row[5],
+            '% Clean Energy': row[6],
+            'Load': row[7]
         })
     return jsonify(response)
 

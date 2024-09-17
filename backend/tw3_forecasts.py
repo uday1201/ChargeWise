@@ -85,7 +85,7 @@ wx_data = get_tw3_fcst('Wx', model_name, start_date, end_date)
 conn = sqlite3.connect('energy_data.db')
 cursor = conn.cursor()
 insert_data_to_table(load_fcst_data, 'load_forecast', cursor, conn)
-insert_data_to_table(wx_data, 'wx_forecast', cursor, conn)
+#insert_data_to_table(wx_data, 'wx_forecast', cursor, conn)
 
 # Close the connection
 cursor.close()
