@@ -4,17 +4,21 @@ export interface Tab {
     icon?: string;
 }
 
-export type SourceType = "Wind" | "Solar" | "Hydro" | "Fossil" | "Nuclear";
+export type SourceType = "wimd" | "solar" | "hydro" | "coal" | "nuclear";
 
 export interface EnergyData {
+    Date: string,
+    "Day of Week": string,
+    Latitude: number,
+    Longitude: number,
+    Timezone: string,
+    "Data Series": EnergyDataPoint[];
+}
+
+export interface EnergyDataPoint {
     "% Clean Energy": number;
-    Date: string; // Format: "YYYY-MM-DD"
-    "Day of Week": string; // Example: "Monday"
-    Latitude: number;
-    "Load (0-100%)": number;
-    Longitude: number;
+    Load: number;
     "Price (per kWh)": number; // Price per kilowatt-hour
-    "Source (Primary)": SourceType;
+    "Source (Primary)": string;
     Time: string; // Format: "YYYY-MM-DD HH:MM:SS"
-    Timezone: string; // Example: "UTC"
 }

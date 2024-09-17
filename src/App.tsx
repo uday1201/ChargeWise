@@ -9,8 +9,8 @@ import { Tabs } from './components/Tabs';
 import StyleGuide, { SCREEN_HEIGHT, SCREEN_WIDTH } from './config/StyleGuide';
 import { colors } from './config/colors';
 import dayjs from 'dayjs';
-import { EnergyData, SourceType, Tab } from './config/types';
-import { dailyData } from './config/dummyData';
+import { EnergyDataPoint, SourceType, Tab } from './config/types';
+import data from './config/data.json';
 import { LineChart } from 'react-native-gifted-charts';
 // import { useInterval } from './config/customHooks';
 import { CustomIcon } from './components/CustomIcon';
@@ -26,18 +26,33 @@ const round = (num: number, sigFigs: number) => {
   const multiplier = Math.pow(10, sigFigs - Math.floor(Math.log10(Math.abs(num))) - 1);
   return Math.round(num * multiplier) / multiplier;
 }
-const getSourceIcon = (source: SourceType) => {
-  if (source === 'Fossil') return 'bonfire';
-  if (source === 'Hydro') return 'water';
-  if (source === 'Solar') return 'sunny';
-  if (source === 'Nuclear') return 'nuclear';
+const getSourceIcon = (source: string) => {
+  if (source === 'coal') return 'bonfire';
+  if (source === 'hydro') return 'water';
+  if (source === 'solar') return 'sunny';
+  if (source === 'nuclear') return 'nuclear';
   return 'leaf';
 }
 
-const startDate = '2024-09-16T00:00';
+const capitalizeFirstLetter = (str: string): string => {
+  if (str.length === 0) return str;
+  return str.charAt(0).toUpperCase() + str.slice(1);
+}
+
+
+const currentDay = data.Date;
+const startDate = currentDay + " 12:00";
+const FORMAT = "YYYY-MM-DD HH:mm"
+const dailyData: EnergyDataPoint[] = data['Data Series'].map(dataPoint => {
+  return {
+    ...dataPoint,
+    Time: `${currentDay} ${dataPoint.Time}`
+  }
+})
+
 
 const App = () => {
-  const [date, setDate] = useState(dayjs(startDate))
+  const [date, setDate] = useState(dayjs(startDate, FORMAT))
   const [endWeekDate, setEndWeekDate] = useState(date.add(7, 'day'));
   const [chartData, setChartData] = useState<any[]>([]);
   // const [currentDataPoint, setCurrentDataPoint] = useState<EnergyData | null>(null);
@@ -49,7 +64,7 @@ const App = () => {
   
 
   const averagePrice = useMemo(() => {
-    const total = dailyData.reduce((sum: number, entry: EnergyData) => sum + entry["Price (per kWh)"], 0);
+    const total = dailyData.reduce((sum: number, entry: EnergyDataPoint) => sum + entry["Price (per kWh)"], 0);
     return total / dailyData.length;
   }, [dailyData]);
 
@@ -66,10 +81,8 @@ const App = () => {
       if (i <= currentDataPointIndex) continue;
       const dataPoint = dailyData[i];
       const isChargingHour = dataPoint['Price (per kWh)'] < averagePrice;
-      // console.log(dataPoint)
       if (startTime === null) {
         if (isChargingHour !== isCharging) {
-          console.log(i, dataPoint.Time)
           startTime = dataPoint.Time;
         }
       } else if (continueLoop) {
@@ -90,13 +103,13 @@ const App = () => {
   //   })
   // }, 3000);
 
-  const renderNowLabel = (dataPoint: EnergyData) => {
+  const renderNowLabel = (dataPoint: EnergyDataPoint) => {
     return <View style={styles.labelContainer}>
       <View style={styles.sourceLabel}>
         <CustomIcon name={getSourceIcon(dataPoint['Source (Primary)'])} size={StyleGuide.size.s12} color={colors.primary} />
-        <Text style={styles.label}>{` ${dataPoint['Source (Primary)']}`}</Text>
+        <Text style={styles.label}>{` ${capitalizeFirstLetter(dataPoint['Source (Primary)'])}`}</Text>
       </View>
-      <Text style={styles.label}>{`$${dataPoint['Price (per kWh)']} /kWh`}</Text>
+      <Text style={styles.label}>{`$${round(dataPoint['Price (per kWh)'], 3)} /kWh`}</Text>
     </View>
   }
 
@@ -107,8 +120,8 @@ const App = () => {
     for (let i = 0; i < data.length; i++) {
       const dataPoint = data[i];
       let additionalProps: any = {};
-      const isNow = dayjs(dataPoint.Time).isSame(date, "hour");
-      if (i % 5 === 0) {
+      const isNow = dayjs(dataPoint.Time, FORMAT).isSame(date, "hour");
+      if (i % 4 === 0) {
         additionalProps.label = dayjs(dataPoint.Time).format('ha');
       } else {
         additionalProps.label = '';
@@ -147,14 +160,14 @@ const App = () => {
   const isClean = useMemo(() => {
     if (!currentDataPoint) return false;
     const source = currentDataPoint['Source (Primary)'];
-    if (source === 'Fossil' || source === 'Nuclear') return false;
+    if (source === 'coal') return false;
     return true;
 
   }, [currentDataPoint]);
 
-  const onChartPress = (index: number) => {
-    console.log(index)
-  }
+  // const onChartPress = (index: number) => {
+  //   console.log(index)
+  // }
 
   const onLeftButtonPress = () => {
     setDate(_date => _date.subtract(1, "hour"))
@@ -183,19 +196,19 @@ const App = () => {
             style={styles.chargeChipStyle}
           />
         </View>
-        {tab.id === 'day' && <Text style={styles.subHeading}>{date.format('ddd DD MMM YYYY HH:mm')}</Text>}
+        {tab.id === 'day' && <Text style={styles.subHeading}>{date.format('ddd DD MMM YYYY HH:mma')}</Text>}
         {tab.id === 'week' && <Text style={styles.subHeading}>{date.format('DD MMM YYYY')} - {endWeekDate.format('DD MMM YYYY')}</Text>}
         {currentDataPoint && <View style={styles.infoContainer}>
           <SmallChip label={`Saving: $${Math.abs(round(averagePrice - currentDataPoint['Price (per kWh)'], 2))}`} success />
-          <SmallChip label={'Source: ' + currentDataPoint['Source (Primary)']} success={isClean} danger={!isClean} icon={sourceIcon} />
-          <SmallChip label={currentDataPoint['% Clean Energy'] + '% Clean'} success={currentDataPoint['% Clean Energy'] >= 50} danger={currentDataPoint['% Clean Energy'] < 50} />
+          <SmallChip label={'Source: ' + capitalizeFirstLetter(currentDataPoint['Source (Primary)'])} success={isClean} danger={!isClean} icon={sourceIcon} />
+          <SmallChip label={Math.round(currentDataPoint['% Clean Energy']) + '% Clean'} success={currentDataPoint['% Clean Energy'] >= 50} danger={currentDataPoint['% Clean Energy'] < 50} />
         </View>}
         <View style={styles.chartContainer}>
           <LineChart
             areaChart
             data={chartData}
-            width={SCREEN_WIDTH * 0.75}
-            spacing={12}
+            width={SCREEN_WIDTH * 0.9}
+            spacing={13}
             curved
             curveType={0}
             noOfSections={3}
@@ -208,7 +221,7 @@ const App = () => {
             endFillColor={colors.lineColor}
             startOpacity={0.4}
             endOpacity={0}
-            onPress={onChartPress}
+            // onPress={onChartPress}
           />
         </View>
       </View>
@@ -217,7 +230,7 @@ const App = () => {
   return (
     <View style={styles.container}>
       <View style={styles.header}>
-        <SmallChip label={'Total Savings: $400'} />
+        <SmallChip label={'Your Savings: $400'} />
         <SmallChip label={'Yes'} icon={'person'} />
       </View>
       <View style={styles.tabsContainer}>
@@ -234,7 +247,7 @@ const App = () => {
         </Text>
         <Text style={styles.nextTime}>{
           nextChargingTime.startTime ? 
-          `${dayjs(nextChargingTime.startTime).format('ha')} - ${dayjs(nextChargingTime.endTime).format('ha')}` :
+          `${dayjs(nextChargingTime.startTime, FORMAT).format('ha')} - ${dayjs(nextChargingTime.endTime, FORMAT).format('ha')}` :
           'Tomorrow'}
         </Text>
       </View>
@@ -348,7 +361,7 @@ const styles = StyleSheet.create({
     color: colors.primary
   },
   nextTime: {
-    fontSize: StyleGuide.size.s30,
+    fontSize: StyleGuide.size.s28,
     fontFamily: StyleGuide.fonts.extraBold,
     color: colors.primary
   },

@@ -1,0 +1,170 @@
+{
+    "Data Series": [
+        {
+            "% Clean Energy": 79.40691927512356,
+            "Load": 6627.1,
+            "Price (per kWh)": 0.012951935714285715,
+            "Source (Primary)": "coal",
+            "Time": "01:00"
+        },
+        {
+            "% Clean Energy": 79.36442426743706,
+            "Load": 6320.4,
+            "Price (per kWh)": -0.001349285714285714,
+            "Source (Primary)": "coal",
+            "Time": "02:00"
+        },
+        {
+            "% Clean Energy": 78.57754927163667,
+            "Load": 5891.5,
+            "Price (per kWh)": -0.0012413142857142859,
+            "Source (Primary)": "coal",
+            "Time": "03:00"
+        },
+        {
+            "% Clean Energy": 78.55917667238423,
+            "Load": 5552.7,
+            "Price (per kWh)": 0.003194,
+            "Source (Primary)": "coal",
+            "Time": "04:00"
+        },
+        {
+            "% Clean Energy": 77.50787224471435,
+            "Load": 5124.6,
+            "Price (per kWh)": 0.003838592857142857,
+            "Source (Primary)": "coal",
+            "Time": "05:00"
+        },
+        {
+            "% Clean Energy": 77.50787224471435,
+            "Load": 5040.4,
+            "Price (per kWh)": 0.006899442857142856,
+            "Source (Primary)": "coal",
+            "Time": "06:00"
+        },
+        {
+            "% Clean Energy": 74.1267787839586,
+            "Load": 4627.1,
+            "Price (per kWh)": 0.012865992857142855,
+            "Source (Primary)": "coal",
+            "Time": "07:00"
+        },
+        {
+            "% Clean Energy": 76.68221185876082,
+            "Load": 4393.1,
+            "Price (per kWh)": 0.01302615,
+            "Source (Primary)": "coal",
+            "Time": "08:00"
+        },
+        {
+            "% Clean Energy": 95.69628035659392,
+            "Load": 4283.3,
+            "Price (per kWh)": 0.014590235714285712,
+            "Source (Primary)": "coal",
+            "Time": "09:00"
+        },
+        {
+            "% Clean Energy": 98.1475907101674,
+            "Load": 4278.0,
+            "Price (per kWh)": 0.018754785714285713,
+            "Source (Primary)": "coal",
+            "Time": "10:00"
+        },
+        {
+            "% Clean Energy": 98.14612643417719,
+            "Load": 4214.4,
+            "Price (per kWh)": 0.015557114285714286,
+            "Source (Primary)": "coal",
+            "Time": "11:00"
+        },
+        {
+            "% Clean Energy": 98.39552172285312,
+            "Load": 4376.4,
+            "Price (per kWh)": 0.015803957142857143,
+            "Source (Primary)": "coal",
+            "Time": "12:00"
+        },
+        {
+            "% Clean Energy": 98.39729320630398,
+            "Load": 4338.5,
+            "Price (per kWh)": 0.017605242857142857,
+            "Source (Primary)": "coal",
+            "Time": "13:00"
+        },
+        {
+            "% Clean Energy": 98.15898965352186,
+            "Load": 4651.7,
+            "Price (per kWh)": 0.02057835,
+            "Source (Primary)": "wind",
+            "Time": "14:00"
+        },
+        {
+            "% Clean Energy": 98.17651349380014,
+            "Load": 5068.2,
+            "Price (per kWh)": 0.020267157142857144,
+            "Source (Primary)": "wind",
+            "Time": "15:00"
+        },
+        {
+            "% Clean Energy": 98.17794216788441,
+            "Load": 5369.0,
+            "Price (per kWh)": 0.021132992857142856,
+            "Source (Primary)": "wind",
+            "Time": "16:00"
+        },
+        {
+            "% Clean Energy": 97.95028509670928,
+            "Load": 5838.6,
+            "Price (per kWh)": 0.021659907142857142,
+            "Source (Primary)": "wind",
+            "Time": "17:00"
+        },
+        {
+            "% Clean Energy": 97.63623861096785,
+            "Load": 6214.9,
+            "Price (per kWh)": 0.02148262142857143,
+            "Source (Primary)": "wind",
+            "Time": "18:00"
+        },
+        {
+            "% Clean Energy": 96.52591352682943,
+            "Load": 6686.9,
+            "Price (per kWh)": 0.045748085714285715,
+            "Source (Primary)": "wind",
+            "Time": "19:00"
+        },
+        {
+            "% Clean Energy": 85.64343513442965,
+            "Load": 7069.1,
+            "Price (per kWh)": 0.07711946428571428,
+            "Source (Primary)": "wind",
+            "Time": "20:00"
+        },
+        {
+            "% Clean Energy": 63.72430471584038,
+            "Load": 7364.3,
+            "Price (per kWh)": 0.07182356428571428,
+            "Source (Primary)": "coal",
+            "Time": "21:00"
+        },
+        {
+            "% Clean Energy": 72.94163123308851,
+            "Load": 7516.3,
+            "Price (per kWh)": 0.05122099285714286,
+            "Source (Primary)": "coal",
+            "Time": "22:00"
+        },
+        {
+            "% Clean Energy": 77.59522031366691,
+            "Load": 7510.8,
+            "Price (per kWh)": 0.029408185714285717,
+            "Source (Primary)": "coal",
+            "Time": "23:00"
+        }
+    ],
+    "Date": "2024-09-13",
+    "Day of Week": "5",
+    "Latitude": 33.43296435204395,
+    "Longitude": -94.03620892214748,
+    "Timezone": "UTC"
+}

@@ -1,6 +1,6 @@
-import { EnergyData } from "./types";
+import { EnergyDataPoint } from "./types";
 
-export const dailyData: EnergyData[] = [
+export const dailyData: EnergyDataPoint[] = [
     {
         "% Clean Energy": 80.0,
         "Date": "2024-09-16",
