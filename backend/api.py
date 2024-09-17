@@ -26,43 +26,40 @@ def add_data():
     # Retrieve the row with the clostest datetime
     cursor.execute("""
         WITH aggregated_data AS (
-            SELECT
-                date,
-                day_of_week,
-                time,
-                timezone,
-                price_per_kwh,
-                source_primary,
-                percent_clean_energy,
-                latitude,
-                longitude,
-                -- Aggregate the load
-                AVG(load) AS average_load
-            FROM energy_data
-            WHERE date = ?
-            GROUP BY
-                date,
-                day_of_week,
-                time,
-                timezone,
-                price_per_kwh,
-                source_primary,
-                percent_clean_energy,
-                latitude,
-                longitude
-        )
         SELECT
             date,
             day_of_week,
             time,
             timezone,
-            price_per_kwh,
+            AVG(price_per_kwh) average_price,
             source_primary,
             percent_clean_energy,
-            average_load AS load,
-            latitude,
-            longitude
-        FROM aggregated_data;
+            AVG(latitude) latitude,
+            AVG(longitude) longitude,
+            -- Aggregate the load
+            AVG(load) AS average_load
+        FROM energy_data
+        WHERE date = ?
+        GROUP BY
+            date,
+            day_of_week,
+            time,
+            timezone,
+            source_primary,
+            percent_clean_energy
+    )
+    SELECT
+        date,
+        day_of_week,
+        time,
+        timezone,
+        average_price AS price_per_kwh,
+        source_primary,
+        percent_clean_energy,
+        average_load AS load,
+        latitude,
+        longitude
+    FROM aggregated_data;
     """, (request_date,))
     fetched_data = cursor.fetchall()
     cursor.close()
@@ -80,7 +77,6 @@ def add_data():
         'Data Series': []
     }
     for row in fetched_data:
-        print(row)
         response['Data Series'].append({
             'Time': row[2],
             'Price (per kWh)': row[4],
